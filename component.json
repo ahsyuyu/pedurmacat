@@ -16,7 +16,8 @@
     "pedurmacat/fromsutra": "*",
     "pedurmacat/searchbar": "*",
     "pedurmacat/corressutras": "*",
-    "pedurmacat/dataset": "*"
+    "pedurmacat/dataset": "*",
+    "pedurmacat/sutraimage": "*"
   },
   "development": {},
   "paths": [

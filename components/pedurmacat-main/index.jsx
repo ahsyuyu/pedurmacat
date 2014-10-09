@@ -7,6 +7,7 @@ var fromsutra=Require("fromsutra");
 var corressutras=Require("corressutras"); 
 var dataset=Require("dataset"); //{dataset.hPedurma};
 var api=Require("dataset").api;
+var sutraimage=Require("sutraimage");
 
 //var longnames={"J":"Lijiang","D":"Derge","C":"Cone","K":"Pedurma","N":"Narthang","H":"Lhasa","U":"Urga"};
 var longnames={"J":"Lijiang","D":"Derge","H":"Lhasa"};
@@ -17,25 +18,31 @@ var main = React.createClass({
   getInitialState: function() {
     return {};
   },
-  search: function(volpage,fromRecen){
+  search: function(volpage,from){
     for(var to in mappings){
-      var res = api.dosearch(volpage,mappings[fromRecen],mappings[to]);
-      //res = [版本縮寫,[[經號],[範圍],[對照經號],[對照範圍],[對照行],[K經號]]]     
+      if(mappings[from].rcode != mappings[to].rcode){
+        var res = api.dosearch(volpage,mappings[from],mappings[to]);
+        //res = [版本縮寫,[[經號],[範圍],[對照經號],[對照範圍],[對照行],[K經號]]]
+      }     
     };
-    this.setState({fromRecen:longnames[fromRecen], KJing:res[1][5]});   
+    this.setState({volpage:volpage, fromRecen:longnames[from], KJing:res[1][5][0]});   
   },
-  searchSutraName:function(KJing){
-    for(var i=0; i<sutranames.length;i++){
-      if(KJing == sutranames[i][0]){
-        this.setState({sutranames[i][1]});
-      }
+  parseVolPage: function(str){
+    var str=str || "";
+    var s=str.match(/(\d+)[@.](\d+)([abcd]*)(\d*)/);
+    //var s=str.match(/(\d+)[@.](\d+)([abcd])(\d*)-*(\d*)([abcd]*)(\d*)/);
+    if(!s){
+      console.log("error!",str);
+      return "";
     }
+    return {vol:parseInt(s[1]),page:parseInt(s[2]),side:s[3] || "x",line:parseInt(s[4]||"1")};
+    //return {vol:parseInt(s[1]),page:parseInt(s[2]),side:s[3],line:parseInt(s[4]||"1"),page2:parseInt(s[5]),side2:s[6],line2:parseInt(s[7]||"1")};
   },
   render: function() {
     return (
       <div>
         <searchbar search={this.search} />        
-        <fromsutra fromRecen={this.state.fromRecen} KJing={this.state.KJing} searchSutraName={this.searchSutraName}/>
+        <fromsutra volpage={this.state.volpage} fromRecen={this.state.fromRecen} KJing={this.state.KJing} parseVolPage={this.parseVolPage}/>
         <corressutras />
       </div>
     );
