@@ -1,7 +1,12 @@
 //var othercomponent=Require("other"); 
 //new module filename must be added to scripts section of ./component.js and export here
 var dataset = {
- module1: require("./module1"),
+ jPedurma: require("./jPedurma"),
+ cPedurma: require("./cPedurma"),
+ dPedurma: require("./dPedurma"),
+ hPedurma: require("./hPedurma"),
+ sutranames: require("./sutranames"),
+ taishonames: require("./taishonames"),
  api:require("./api")
 }
 

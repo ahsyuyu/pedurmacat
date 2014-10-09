@@ -5,23 +5,27 @@
 //var othercomponent=Require("other"); 
 var searchbar = React.createClass({
   getInitialState: function() {
-    return {};
+    return {recen:""};
   },
   search: function() {
-    var tofind=this.refs.volpage.getDOMNode().value;
-    {this.props.search(tofind)}
+    var volpage=this.refs.volpage.getDOMNode().value;
+    {this.props.search(volpage,this.state.recen)};
+  },
+  getRecen: function(e) {
+    var recen=e.target.value;
+    this.setState({recen:recen});
   },
   render: function() {
     return(
       <div className="row col-lg-offset-4">
         <div className="col-lg-2">  
-          <select NAME="form_name" ID="form_name" className="form-control">
-          <option NAME="version" VALUE="D">Derge</option>
-          <option NAME="version" VALUE="J">Lijiang</option>     
-          <option NAME="version" VALUE="C">Cone</option>
-          <option NAME="version" VALUE="N">Narthang</option>
-          <option NAME="version" VALUE="H">Lhasa</option>
-          <option NAME="version" VALUE="U">Urga</option>
+          <select onChange={this.getRecen} className="form-control">
+            <option value="D">Derge</option>
+            <option value="J">Lijiang</option>     
+            <option value="C">Cone</option>
+            <option value="N">Narthang</option>
+            <option value="H">Lhasa</option>
+            <option value="U">Urga</option>
           </select>
         </div>      
         <div className="col-lg-3">

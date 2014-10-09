@@ -3,14 +3,21 @@
 /* to rename the component, change name of ./component.js and  "dependencies" section of ../../component.js */
 
 //var othercomponent=Require("other"); 
+var sutranames=Require("dataset").sutranames; 
+var taishonames=Require("dataset").taishonames;
+
 var fromsutra = React.createClass({
   getInitialState: function() {
     return {};
   },
+  renderSutraName: function(){
+    {this.props.searchSutraName}
+  },
   render: function() {
     return (
       <div>
-        Rendering fromsutra
+        {this.sutranames.length}
+        {this.taishonames.length}
       </div>
     );
   }
