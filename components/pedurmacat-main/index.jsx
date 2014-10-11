@@ -7,10 +7,8 @@ var corressutras=Require("corressutras");
 var dataset=Require("dataset"); //{dataset.hPedurma};
 var api=Require("dataset").api;
 var sutraimage=Require("sutraimage");
-//var longnames={"J":"Lijiang","D":"Derge","C":"Cone","K":"Pedurma","N":"Narthang","H":"Lhasa","U":"Urga"};
-var longnames={"J":"Lijiang","D":"Derge","H":"Lhasa"};
-//var mappings={"J":jPedurma,"D":dPedurma,"C":cPedurma,"K":kPedurma,"N":nPedurma,"H":hPedurma,"U":uPedurma};
-var mappings={"J":dataset.jPedurma,"D":dataset.dPedurma,"H":dataset.hPedurma};
+var longnames={"J":"Lijiang","D":"Derge","C":"Cone","K":"Pedurma","N":"Narthang","H":"Lhasa","U":"Urga"};
+var mappings={"J":dataset.jPedurma,"D":dataset.dPedurma,"C":dataset.cPedurma,"K":dataset.kPedurma,"N":dataset.nPedurma,"H":dataset.hPedurma,"U":dataset.uPedurma};
 
 var main = React.createClass({
   getInitialState: function() {

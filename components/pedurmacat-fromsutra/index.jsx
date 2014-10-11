@@ -18,9 +18,9 @@ var fromBar = React.createClass({
     return  (
       <div>
         <span className="recen">{this.props.fromRecen}</span>       
-        Sutra: {this.props.fromJing}
-        Sutra Name: {this.searchSutraName(this.props.KJing)}
-        Taisho Name: 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sutra: {this.props.fromJing}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sutra Name: {this.searchSutraName(this.props.KJing)}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Taisho Name: 
       </div>
     );
   }

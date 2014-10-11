@@ -5,6 +5,9 @@ var dataset = {
  cPedurma: require("./cPedurma"),
  dPedurma: require("./dPedurma"),
  hPedurma: require("./hPedurma"),
+ kPedurma: require("./kPedurma"),
+ uPedurma: require("./uPedurma"),
+ nPedurma: require("./nPedurma"),
  sutranames: require("./sutranames"),
  taishonames: require("./taishonames"),
  api:require("./api")

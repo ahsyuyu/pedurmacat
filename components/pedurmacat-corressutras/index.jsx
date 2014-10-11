@@ -24,11 +24,11 @@ var corressutras = React.createClass({
     return(
       <div>
         <span className="recen">{item.toRecen}</span>
-        Sutra: {item.toJing}
-        Volume: {corresLine.vol}
-        Page: {corresLine.page}
-        Side: {corresLine.side}
-        Line: {corresLine.line}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sutra: {item.toJing}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Volume: {corresLine.vol}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Page: {corresLine.page}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Side: {corresLine.side}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Line: {corresLine.line}
         <sutraimage volpage={corresLine} recen={item.toRecen} parseVolPage={this.props.parseVolPage} />
       </div>
     );
