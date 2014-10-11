@@ -16,8 +16,9 @@ var fromBar = React.createClass({
   },
   render: function(){
     return  (
-      <div>       
-        Sutra: {this.props.KJing}
+      <div>
+        <span className="recen">{this.props.fromRecen}</span>       
+        Sutra: {this.props.fromJing}
         Sutra Name: {this.searchSutraName(this.props.KJing)}
         Taisho Name: 
       </div>
@@ -30,12 +31,11 @@ var fromsutra = React.createClass({
     return {};
   }, 
   render: function() {
+    var volpage=this.props.parseVolPage(this.props.volpage);
     return (
-      <div>
-        {this.props.fromRecen}       
-        <fromBar KJing={this.props.KJing} fromRecen={this.props.fromRecen}/>
-        <sutraimage volpage={this.props.volpage} recen={this.props.fromRecen} parseVolPage={this.props.parseVolPage} />
-        //recen={this.state.fromRecen} volpage_p={this.state.volpage_p}
+      <div>     
+        <fromBar KJing={this.props.KJing} fromRecen={this.props.fromRecen} fromJing={this.props.fromJing} />
+        <sutraimage volpage={volpage} recen={this.props.fromRecen} />
       </div>
     );
   }
