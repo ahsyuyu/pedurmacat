@@ -5,7 +5,13 @@
 //var othercomponent=Require("other"); 
 var searchbar = React.createClass({
   getInitialState: function() {
-    return {recen:""};
+    return {recen:"J"};
+  },
+  componentDidMount: function() {
+    if(window.location.hash){
+      var v=window.location.hash.substr(1);
+      this.refs.volpage.getDOMNode().value=v;
+    }
   },
   search: function() {
     var volpage=this.refs.volpage.getDOMNode().value;
@@ -20,8 +26,8 @@ var searchbar = React.createClass({
       <div className="row col-lg-offset-4">
         <div className="col-lg-2">  
           <select onChange={this.getRecen} className="form-control">
-            <option value="D">Derge</option>
-            <option value="J">Lijiang</option>     
+            <option value="J">Lijiang</option>
+            <option value="D">Derge</option>                
             <option value="C">Cone</option>
             <option value="N">Narthang</option>
             <option value="H">Lhasa</option>

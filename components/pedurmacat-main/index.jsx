@@ -9,10 +9,16 @@ var api=Require("dataset").api;
 var sutraimage=Require("sutraimage");
 var longnames={"J":"Lijiang","D":"Derge","C":"Cone","K":"Pedurma","N":"Narthang","H":"Lhasa","U":"Urga"};
 var mappings={"J":dataset.jPedurma,"D":dataset.dPedurma,"C":dataset.cPedurma,"K":dataset.kPedurma,"N":dataset.nPedurma,"H":dataset.hPedurma,"U":dataset.uPedurma};
-
 var main = React.createClass({
   getInitialState: function() {
     return {corres:[],res:[]};
+  },
+  componentDidMount: function() {
+    if(window.location.hash){
+      var v=window.location.hash.substr(1);
+      console.log(v);
+      {this.search(v,"J")}
+    }
   },
   search: function(volpage,from){
     var out=[];
@@ -20,6 +26,7 @@ var main = React.createClass({
       if(mappings[from].rcode != mappings[to].rcode){
         var res = api.dosearch(volpage,mappings[from],mappings[to]);
         //res = [版本縮寫,[[經號],[範圍],[對照經號],[對照範圍],[對照行],[K經號]]]
+        res[1]=res[1] || [[0],[0],[0],[0],[0],[0]];
         out.push({
           toRecen:longnames[to],
           toJing:res[1][0][0],

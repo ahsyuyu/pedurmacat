@@ -6,7 +6,7 @@
 var sutraimage=Require("sutraimage");
 var corressutras = React.createClass({
   getInitialState: function() {
-    return {};
+    return {recen:""};
   },
   snap2realpage: function(id){
     if(id.side == "c"){

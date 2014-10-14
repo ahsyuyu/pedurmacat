@@ -10,13 +10,15 @@ var fromVolpage=function(volpage,from,to){
 	var range=findRange(volpage,from);//range=[J經號,J範圍,K經號]
 	var corres_range=findCorresRange(range[2],to);//corres_range=[D經號,D範圍]
 	//算J和D的範圍
-	var vRange=countRange(range[1],range[1]);//[vStart,vEnd-vStart]
-	var corres_vRange=countRange(corres_range[0][1],corres_range[corres_range.length-1][1]);//[vStart,vEnd-vStart]
-	var corresLine=countCorresLine(volpage,vRange[1],corres_vRange[1],vRange[0],corres_vRange[0]);
+	if(corres_range.length != 0){
+		var vRange=countRange(range[1],range[1]);//[vStart,vEnd-vStart]
+		var corres_vRange=countRange(corres_range[0][1],corres_range[corres_range.length-1][1]);//[vStart,vEnd-vStart]
+		var corresLine=countCorresLine(volpage,vRange[1],corres_vRange[1],vRange[0],corres_vRange[0]);
 
-	out.push([range[0]],[range[1]],[corres_range[0][0]],[corres_range[0][1]],[corresLine],[range[2]]);
-				// [經號],[範圍],[對照經號],[對照範圍],[對照行],[K經號]
-	return out;
+		out.push([range[0]],[range[1]],[corres_range[0][0]],[corres_range[0][1]],[corresLine],[range[2]]);
+					// [經號],[範圍],[對照經號],[對照範圍],[對照行],[K經號]
+		return out;
+	}
 }
 
 var countCorresLine=function(volpage,range,corres_range,start,corres_start){//volpage=使用者輸入的volpage
